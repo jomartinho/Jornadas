@@ -1,57 +1,86 @@
-* {
-  box-sizing: border-box;
-}
+@use "../abstracts/variables" as *;
 
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
-  padding: 2rem;
-  font-family: $font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: $uoc-bg;
-  color: $uoc-corporate;
-}
+$border-radius: $border-radius-default;
+$border-radius-lg: 0.75rem;
+$box-shadow-sm: 0 1px 3px rgba(0 0 0 / 8%);
 
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+@layer poster {
+  .main-poster {
+    background: radial-gradient(
+        circle at 20% 20%,
+        color-mix(in lch, oklch(82% 0.15 264deg) 40%, white) 0,
+        transparent 70%
+      ),
+      $uoc-bg;
+    display: grid;
+    min-height: 100dvh;
+    padding-inline: 2rem;
+    place-items: center;
+  }
 
-.uoc-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
+  .poster {
+    background: #fff;
+    border-radius: $border-radius-default;
+    box-shadow: $box-shadow-default;
+    container-type: inherit;
+    display: grid;
+    gap: 1.75rem;
+    max-width: min(90cqi, 560px);
+    padding: clamp(2rem, 4cqi, 4rem);
+    text-align: center;
+  }
 
-  @media (min-width: $mqMinWidth) {
-    max-width: none;
+  .poster__title {
+    color: $uoc-corporate;
+    font-family: $font-family-serif;
+    font-size: clamp(2rem, 4cqi + 1rem, 3rem);
+    line-height: 1.1;
+  }
+
+  .poster__subtitle {
+    color: $color-accent;
+    font-size: clamp(1rem, 2.5cqi + 0.5rem, 1.25rem);
+    font-weight: 600;
+    margin-block: -0.25rem 0.25rem;
+  }
+
+  .poster__text {
+    color: $color-text-dark;
+    font-size: 1rem;
+  }
+
+  @container (min-width: 700px) {
+    .poster__title {
+      font-size: 3rem;
+    }
+    
+    .poster__text {
+      font-size: 1.125rem;
+    }
+  }
+
+  .poster__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--flow-space, 1em);
+    justify-content: center;
+
+    .btn {
+      font-size: 0.95rem;
+      padding: 0.5rem 1.25rem;
+    }
+
+    .btn-outline-primary:hover {
+      background: $uoc-corporate;
+      color: #fff;
+    }
   }
 }
 
-.uoc-title {
-  font-family: $font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: $uoc-corporate;
-
-  @media (min-width: $mqMinWidth) {
-    font-size: 36px;
+@supports not (display: grid) {
+  .main-poster {
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
-}
-
-.uoc-footer {
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
-  text-align: center;
 }

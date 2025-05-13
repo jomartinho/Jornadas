@@ -1,0 +1,10 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-scss", "stylelint-order"],
+  "rules": {
+    "selector-class-pattern": [
+  "^(btn-.*|col-.*|form-(?:control|select)|site-.*|main-.*)$|^[a-z]([a-z0-9]*)(__[a-z0-9]+)?(--[a-z0-9]+)?$",
+  { "resolveNestedSelectors": true }
+]
+  }
+}

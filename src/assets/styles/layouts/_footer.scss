@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as *;
+
+.site-footer {
+  background: $color-bg-dark;
+  color: #fff;
+  font-size: 0.85rem;
+
+  .container {
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+}

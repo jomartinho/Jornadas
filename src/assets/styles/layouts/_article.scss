@@ -1,0 +1,130 @@
+@use "../abstracts/variables" as *;
+@use "sass:color";
+
+@layer article {
+  .article {
+    background: $color-bg-light;
+    padding-block: 4rem;
+  }
+
+  .article > .wrapper {
+    margin-inline: auto;
+    max-width: 900px;
+    padding-inline: 1rem;
+  }
+
+  .article__container {
+    background: #fff;
+    border-radius: $border-radius-default;
+    box-shadow: $box-shadow-default;
+    container-type: inline-size;
+    display: grid;
+    gap: 1.75rem;
+    max-width: 880px;
+    padding: clamp(1.5rem, 4cqi, 3rem);
+  }
+
+  .article__title {
+    color: $uoc-corporate;
+    font: 700 clamp(1.8rem, 4cqi + 0.5rem, 2.75rem) / 1.15 $font-family-serif;
+  }
+
+  .article__meta {
+    color: $color-text-dark;
+    font: 0.9rem / 1.4 $font-family-sans-serif;
+  }
+
+  .article__figure {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+
+    &:has(figcaption) {
+      background: $color-bg-light;
+      border-radius: $border-radius-default;
+      padding: 0.75rem;
+    }
+
+    img {
+      aspect-ratio: 16 / 10;
+      border-radius: $border-radius-default;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    figcaption {
+      color: $color-text-dark;
+      font-size: 0.8rem;
+    }
+  }
+
+  p,
+  li {
+    font-size: clamp(1rem, 1cqi + 0.875rem, 1.125rem);
+    line-height: 1.6;
+  }
+
+  h2 {
+    font-family: $font-family-serif;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-block: 1.5rem 2rem;
+    padding-inline-start: 1.25rem;
+
+    li {
+      line-height: 1.45;
+    }
+  }
+
+  .article__link {
+    color: $uoc-corporate;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover {
+      color: color.adjust($uoc-corporate, $lightness: -10%);
+    }
+  }
+
+  blockquote {
+    border-inline-start: 0.35rem solid $uoc-corporate;
+    font-style: italic;
+    margin-block: 1.5rem;
+    padding-inline-start: 1rem;
+
+    :is(em, strong) {
+      color: $color-accent;
+    }
+  }
+
+  figure:has(figcaption) {
+    background: $color-bg-light;
+    border-radius: $border-radius-default;
+    padding: 0.75rem;
+  }
+
+  @container (min-width: 900px) {
+    .article__title {
+      font-size: 2.75rem;
+    }
+
+    p,
+    li {
+      font-size: 1.05rem;
+    }
+  }
+
+  @supports not (display: grid) {
+    .article__container {
+      display: block;
+    }
+  }
+}
+
+:where(.article__container) > * + * {
+  margin-block-start: 1rem;
+}

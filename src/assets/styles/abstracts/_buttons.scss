@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as *;
+@use "sass:color";
+
+$btn-green: #1b7f43;
+$btn-green-light: color.mix($btn-green, #fff, 80%);
+
+@layer bootstrap-overrides {
+  [class*="btn-"] {
+    --bs-btn-color:           #fff;
+    --bs-btn-bg:              #{$uoc-corporate};
+    --bs-btn-border-color:    #{$uoc-corporate};
+    --bs-btn-hover-color:          #fff;
+    --bs-btn-hover-bg:             #{$btn-green-light};
+    --bs-btn-hover-border-color:   #{$btn-green-light};
+    --bs-btn-active-color:         #fff;
+    --bs-btn-active-bg:            #{$btn-green};
+    --bs-btn-active-border-color:  #{$btn-green};
+    --bs-btn-disabled-bg:          #{$uoc-corporate};
+    --bs-btn-disabled-border-color:#{$uoc-corporate};
+  }
+
+  .btn-outline-primary,
+  .btn-outline-success,
+  .btn-outline-secondary {
+    --bs-btn-color:     #{$uoc-corporate};
+    --bs-btn-bg:        transparent;
+    --bs-btn-border-color: #{$uoc-corporate};
+    --bs-btn-hover-color:        #fff;
+    --bs-btn-hover-bg:           #{$btn-green-light};
+    --bs-btn-hover-border-color: #{$btn-green-light};
+  }
+}

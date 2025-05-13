@@ -1,0 +1,77 @@
+@use "../abstracts/variables" as *;
+@use "sass:color";
+
+@layer contact {
+  .contact {
+    background: linear-gradient(
+      135deg,
+      oklch(88% 0.15 160deg) 0%,
+      oklch(94% 0.02 230deg) 100%
+    );
+    display: grid;
+    min-height: 100svh;
+    padding: 4dvw;
+    place-content: center;
+  }
+
+  .wrapper {
+    container-type: normal;
+    margin-inline: auto;
+    max-width: min(92cqi, 820px);
+  }
+
+  .contact__intro {
+    margin-block-end: clamp(1rem, 3cqi, 2rem);
+    text-align: center;
+
+    .contact__title {
+      color: $uoc-corporate;
+      font-family: $font-family-serif;
+      font-size: clamp(1.75rem, 4cqi + 0.5rem, 2.75rem);
+    }
+
+    p {
+      color: $color-text-dark;
+      margin-block-start: 0.5rem;
+    }
+  }
+
+  .contact__form {
+    --gap: clamp(1rem, 3cqi, 1.5rem);
+
+    background: #fff;
+    border-radius: $border-radius-default;
+    box-shadow: 0 8px 20px rgba(0 0 0 / 12%);
+    padding: clamp(1.5rem, 5cqi, 3rem);
+  }
+
+  .form-control,
+  .form-select,
+  textarea.form-control {
+    border: 1px solid rgba(0 0 0 / 15%);
+    border-radius: $border-radius-default;
+
+    &:focus {
+      border-color: $uoc-corporate;
+      box-shadow: 0 0 0 0.25rem rgba($uoc-corporate, 0.25);
+    }
+  }
+
+  .btn-primary {
+    --bs-btn-bg: #{$uoc-corporate};
+    --bs-btn-border-color: #{$uoc-corporate};
+    --bs-btn-hover-bg: #{color.mix($uoc-corporate, #fff, 15%)};
+    --bs-btn-hover-border-color: #{color.mix($uoc-corporate, #fff, 15%)};
+  }
+
+  @container (min-width: 640px) {
+    .contact__form .row > .col-md-6 {
+      padding-inline-end: var(--gap);
+    }
+  }
+}
+
+.hidden {
+  left: -9999px !important;
+  position: absolute !important;
+}

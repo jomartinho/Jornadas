@@ -1,0 +1,34 @@
+@use "../abstracts/variables" as *;
+
+@layer libre {
+  .thanks {
+    background: linear-gradient(
+        160deg,
+        oklch(92% 0.18 210deg) 0%,
+        oklch(98% 0 0deg / 0%) 70%
+      ),
+      $color-bg-light;
+    display: grid;
+    min-height: 80dvh;
+    place-content: center;
+    text-align: center;
+
+    > .wrapper {
+      margin-inline: auto;
+      max-inline-size: 30rem;
+      padding-inline: 1.25rem;
+    }
+
+    &__title {
+      color: $uoc-corporate;
+      font-family: $font-family-serif;
+      font-size: clamp(2rem, 4cqi + 0.5rem, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    &__text {
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
