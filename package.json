@@ -5,16 +5,18 @@
   "description": "Boilerplate for Advanced HTML/CSS Tools UOC students",
   "scripts": {
   "parcel:serve": "parcel src/*.html -p 8123 --no-cache --open",
-  "parcel:build": "if not exist dist mkdir dist && parcel build src/*.html --dist-dir dist --no-source-maps --no-cache",
+  "parcel:build": "parcel build src/*.html --dist-dir dist --no-source-maps --no-cache",
   "clean": "rimraf dist .cache .cache-loader .parcel-cache",
-  "dev": "npm-run-all clean parcel:serve",
-  "build": "npm-run-all clean parcel:build",
-  "test": "echo 'Everything is working as expected ✅\\nStart working on your project by running \\033[1mnpm run dev\\033[0m'"
-  },
+  "dev": "npm run clean && npm run parcel:serve",
+  "build": "npm run clean && npm run parcel:build",
+  "lint:css": "stylelint 'src/**/*.scss'",
+  "lint:css:fix": "stylelint 'src/**/*.scss' --fix"
+},
   "targets": {
     "web": {
       "context": "browser",
       "publicUrl": "./",
+      "distDir": "./dist",
       "source": "src/index.html",
       "engines": {
         "browsers": "last 2 versions, > 0.5%, not dead"
