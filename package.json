@@ -7,16 +7,13 @@
   "parcel:serve": "parcel src/*.html -p 8123 --no-cache --open",
   "parcel:build": "parcel build src/*.html --dist-dir dist --no-source-maps --no-cache",
   "clean": "rimraf dist .cache .cache-loader .parcel-cache",
-  "dev": "npm run clean && npm run parcel:serve",
-  "build": "npm run clean && npm run parcel:build",
-  "lint:css": "stylelint 'src/**/*.scss'",
-  "lint:css:fix": "stylelint 'src/**/*.scss' --fix"
-},
+  "dev": "npm-run-all clean parcel:serve",
+  "build": "npm run clean && npm run parcel:build"
+  },
   "targets": {
     "web": {
       "context": "browser",
       "publicUrl": "./",
-      "distDir": "./dist",
       "source": "src/index.html",
       "engines": {
         "browsers": "last 2 versions, > 0.5%, not dead"
